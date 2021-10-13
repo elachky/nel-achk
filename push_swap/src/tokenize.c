@@ -11,7 +11,8 @@ static int *dup_elements(int argc, char **argv)
         return NULL;
     while (i < argc - 1)
     {
-        res[i] = atoi(argv[i + 1]);
+        //check_str_within_limit
+        res[i] = ft_atoi(argv[i + 1]); //O.o
         i++;
     }
     return res;
@@ -99,14 +100,14 @@ void    label_with_index(int length, int *sorted, int **list){
     }
 }
 
-int tokenize(int argc, char **argv, int ***stacks)
+int *tokenize(int argc, char **argv)
 {
     int *temp;
     int *a;
     int i;
 
     i = 0;
-    a = (*stacks)[0];
+    a = (int *)malloc(sizeof(int) * argc);
     temp = dup_elements(argc, argv);
     while (i < argc - 1)
         a[i++] = temp[i];
@@ -119,5 +120,5 @@ int tokenize(int argc, char **argv, int ***stacks)
     sort(argc - 1, &temp);
     label_with_index(argc - 1, temp, &a);
     free(temp);
-    return 0;
+    return (a);
 }

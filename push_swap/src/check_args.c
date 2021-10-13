@@ -56,11 +56,8 @@ static int check_negatif_numbers(int argc, char **argv)
     return 0;
 }
 
-int check_args(int argc, char **argv, int ***stacks)
+int check_args(int argc, char **argv)
 {
-    int **s;
-
-    s = *stacks;
     if (check_duplicates(argc, argv) == 1)
     {
         write(2, "error: duplicate numbers\n", 25);
@@ -76,13 +73,5 @@ int check_args(int argc, char **argv, int ***stacks)
         write(2, "error: non digit values\n", 25);
         return 1;
     }
-    s[0] = (int *)malloc(sizeof(int) * argc);
-    s[1] = (int *)malloc(sizeof(int) * argc);
-    if (!s[0] || !s[1])
-    {
-        write(2, "memory problem\n", 15);
-        return 1;
-    }
-    // printf("all is good");
     return 0;
 }
