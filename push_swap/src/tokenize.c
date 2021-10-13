@@ -2,17 +2,22 @@
 
 static int *dup_elements(int argc, char **argv)
 {
-    int *res;
-    int i;
+    int     *res;
+    long    temp;
+    int     i;
 
     i = 0;
-    res = (int *)malloc(sizeof(int) * argc);
-    if (!res)
+    if (!(res = (int *)malloc(sizeof(int) * argc)))
         return NULL;
     while (i < argc - 1)
     {
-        //check_str_within_limit
-        res[i] = ft_atoi(argv[i + 1]); //O.o
+        temp = ft_atol(argv[i + 1]);
+        if (temp > P_MAX_INT || temp < P_MIN_INT)
+        {
+            ft_putstr_fd(2, "Error out of range\n");
+            exit(1);
+        }
+        res[i] = (int)temp;
         i++;
     }
     return res;
@@ -110,11 +115,14 @@ int *tokenize(int argc, char **argv)
     a = (int *)malloc(sizeof(int) * argc);
     temp = dup_elements(argc, argv);
     while (i < argc - 1)
-        a[i++] = temp[i];
+    {
+        a[i] = temp[i];
+        i++;
+    }
     is_sorted(argc - 1, temp);
     if (is_rev_sorted(argc - 1, temp) == 0)
     {
-        //reverse the stack and exit 0 
+        //reverse the stack argc - 1 time and exit 0 
         printf("is_rev_sorted\n");
     }
     sort(argc - 1, &temp);

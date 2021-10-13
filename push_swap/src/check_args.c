@@ -60,17 +60,17 @@ int check_args(int argc, char **argv)
 {
     if (check_duplicates(argc, argv) == 1)
     {
-        write(2, "error: duplicate numbers\n", 25);
+        ft_putstr_fd(2, "Error: duplicate numbers\n");
         return 1;
     }
     if (check_negatif_numbers(argc, argv) == 1)
     {
-        write(2, "error: negatif number\n", 23);
+        ft_putstr_fd(2, "Error: negatif number\n");
         return 1;
     }
     if (check_is_number(argc, argv) == 1)
     {
-        write(2, "error: non digit values\n", 25);
+        ft_putstr_fd(2, "Error: non digit values\n");
         return 1;
     }
     return 0;
