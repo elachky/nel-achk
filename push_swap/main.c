@@ -22,7 +22,6 @@ int main(int argc, char **argv)
     // ft_stack_pushto(&a, &b);
     // ft_stack_pushto(&a, &b);
     // ft_stack_pushto(&a, &b);
-    // ft_stack_pushto(&a, &b);
     tmpa = a;
     tmpb = b;
 
