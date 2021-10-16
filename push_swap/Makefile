@@ -12,11 +12,11 @@ SRC	:=	main.c \
 
 OBJ := $(SRC:.c=.o)
 
-%.o : %.c
+%.o : %.c $(HEADERS)
 	$(CC) -g $(FLAG) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(OBJ) $(HDR)
-	make -C ./utils/
+	make -C ./utils
 	make -C ./stack
 	$(CC) $(FLAG) $(INCLUDE) $(OBJ) $(LIBS) -o $(NAME)
 
