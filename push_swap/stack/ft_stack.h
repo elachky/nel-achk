@@ -21,5 +21,6 @@ void        ft_stack_revrotate(t_stack **a);
 void        ft_stack_rrevrotate(t_stack **, t_stack **);
 void        ft_stack_swap(t_stack **);
 void        ft_stack_pushto(t_stack **, t_stack **);
+int         ft_stack_len(t_stack *);
 
 #endif

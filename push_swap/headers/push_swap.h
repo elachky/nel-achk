@@ -16,5 +16,6 @@
 int     check_args(int, char **);
 int     *tokenize(int, char **);
 void    set_on_stack(t_stack **, int *, int);
+void    push_swap_sort(t_stack **, t_stack **, int);
 
 #endif

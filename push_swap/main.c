@@ -19,22 +19,24 @@ int main(int argc, char **argv)
             set_on_stack(&a, stack, argc - 1);
             free(stack);
             //sort logic
+            push_swap_sort(&a, &b, argc - 1);
         }
     }
-    ft_stack_pushto(&a, &b);
-    ft_stack_pushto(&a, &b);
-    ft_stack_pushto(&a, &b);
-    ft_stack_pushto(&a, &b);
-    tmpa = a;
-    tmpb = b;
+    // ft_stack_pushto(&a, &b);
+    // ft_stack_pushto(&a, &b);
+    // ft_stack_pushto(&a, &b);
+    // ft_stack_pushto(&a, &b);
+    // tmpa = a;
+    // tmpb = b;
 
 
 
+    printf("length a : %d\n",ft_stack_len(a));
     while (tmpa){
         printf("%d ", tmpa->data);
         tmpa = tmpa->next;
     }
-    printf("\n\n");
+    printf("\nlength a : %d\n",ft_stack_len(b));
     while (tmpb){
         printf("%d ", tmpb->data);
         tmpb = tmpb->next;
