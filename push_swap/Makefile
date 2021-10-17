@@ -4,11 +4,11 @@ INCLUDE = -I./headers/ -I./utils/ -I./stack/
 CC = gcc
 LIBS = -L./utils/ -lutils -L./stack/ -lstack
 CC = gcc
-FLAG = -Wall -Werror -Wextra
+# FLAG = -Wall -Werror -Wextra
 HDR = headers/push_swap.h
 
 SRC	:=	main.c \
-		src/check_args.c src/tokenize.c src/set_on_stack.c\
+		src/check_args.c src/push_swap_sort.c src/set_on_stack.c\
 
 OBJ := $(SRC:.c=.o)
 

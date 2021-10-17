@@ -15,5 +15,6 @@ long	ft_atol(const char *str);
 size_t	ft_strlen(const char *str);
 int		get_next_line(char **line);
 void	ft_putnbr(int n);
+int 	*ft_calloc(int n);
 
 #endif

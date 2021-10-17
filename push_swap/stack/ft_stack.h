@@ -26,5 +26,6 @@ int     ft_stack_len(t_stack *);
 int     ft_stack_min(t_stack *);
 int     ft_stack_max(t_stack *);
 int     ft_stack_check_sorted(t_stack *);
+int     ft_stack_value_at(t_stack *, int);
 
 #endif
