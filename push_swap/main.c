@@ -16,7 +16,7 @@ int main(int argc, char **argv)
             set_on_stack(&a, argc, argv);
                 
             //sort logic
-            push_swap_sort(&a, /*&b,*/ argc - 1);
+            push_swap_sort(&a, &b, argc - 1);
         }
     }
     // ft_stack_pushto(&a, &b);

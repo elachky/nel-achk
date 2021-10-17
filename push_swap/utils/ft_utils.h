@@ -16,5 +16,7 @@ size_t	ft_strlen(const char *str);
 int		get_next_line(char **line);
 void	ft_putnbr(int n);
 int 	*ft_calloc(int n);
+int     ft_max_arr(int *, int);
+int     ft_last_index(int *, int, int);
 
 #endif

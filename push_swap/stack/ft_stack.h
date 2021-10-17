@@ -9,8 +9,8 @@
 
 
 typedef struct  s_stack{
-    int             data;
-    struct s_stack  *next;
+	int             data;
+	struct s_stack  *next;
 }               t_stack;
 
 t_stack *ft_stack_push(t_stack **, int);
@@ -27,5 +27,7 @@ int     ft_stack_min(t_stack *);
 int     ft_stack_max(t_stack *);
 int     ft_stack_check_sorted(t_stack *);
 int     ft_stack_value_at(t_stack *, int);
+int     ft_stack_nvalue_at(t_stack *, int);
+int     ft_stack_index_of(t_stack *s, int value);
 
 #endif

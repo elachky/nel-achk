@@ -3,7 +3,6 @@
 void    set_on_stack(t_stack **a, int len, char **argv)
 {
     long temp;
-    int i;
 
     while (--len)
     {
@@ -15,7 +14,6 @@ void    set_on_stack(t_stack **a, int len, char **argv)
             exit(EXIT_FAILURE);
         }
         ft_stack_unshift(a, (int)temp);
-        i++;
     }
     if(ft_stack_check_sorted(*a))
     {

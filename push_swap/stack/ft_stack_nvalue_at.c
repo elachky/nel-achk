@@ -1,15 +1,13 @@
 #include "ft_stack.h"
 
-int ft_stack_value_at(t_stack *s, int index)
+int ft_stack_nvalue_at(t_stack *s, int index)
 {
     int i;
     int len;
 
     len = ft_stack_len(s);
-    if (index < 0)
-        index = len + index;
-    i = 0;
-    while (i != index && s)
+    i = -(len / 2);
+    while (s->next && i != index)
     {
         s = s->next;
         i++;

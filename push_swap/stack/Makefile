@@ -9,7 +9,7 @@ HEADERS := ft_stack.h
 SRC :=	ft_stack_push.c  ft_stack_destroy.c  ft_stack_rotate.c \
 		ft_stack_swap.c ft_stack_revrotate.c ft_stack_pushto.c \
 		ft_stack_len.c ft_stack_min.c ft_stack_max.c ft_stack_check_sorted.c \
-		ft_stack_value_at.c
+		ft_stack_value_at.c ft_stack_nvalue_at.c ft_stack_index_of.c
 		
 
 OBJ := $(SRC:.c=.o)
