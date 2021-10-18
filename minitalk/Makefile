@@ -1,35 +1,37 @@
 CLIENT := client
 SERVER := server
 
-INCLUDE = -I./ -I./libft
+INCLUDE = -I./includes -I./src/libft/
 CC = gcc
-LIBS = -L./libft -libft
-CC = gcc
+LIBFT = src/libft/libft.a
 FLAG = -Wall -Werror -Wextra
-HDR = minitalk.h
+HDR = includes/
+LIBFT_PATH = src/libft/
 
-SRC	:=	client.c server.c
-
+SRC	:=	 src/encode.c src/decode.c
 OBJ := $(SRC:.c=.o)
 
 %.o : %.c $(HDR)
-	$(CC) -g $(FLAG) $(INCLUDE) -c $< -o $@
+	$(CC) $(FLAG) $(INCLUDE) -c $< -o $@
 
-$(SERVER) : $(OBJ) $(HDR)
-	make -C ./libft
-	$(CC) $(FLAG) $(INCLUDE) $(OBJ) $(LIBS) -o $(SERVER)
+all : ${LIBFT} ${SERVER} $(CLIENT)
 
-$(CLIENT) : $(OBJ) $(HDR)
-	$(CC) $(FLAG) $(INCLUDE) $(OBJ) $(LIBS) -o $(CLIENT)
+$(SERVER) : $(SRC) ${LIBFT} ${HDR} ${OBJ}
+	make -C ${LIBFT_PATH}
+	$(CC) $(FLAG) $(INCLUDE) server.o $(SRC) $(LIBFT) -o $(SERVER)
 
-all : ${CLIENT} ${SERVER}
+$(CLIENT) : $(SRC) $(LIBFT) ${HDR}
+	$(CC) $(FLAG) $(INCLUDE) client.o $(SRC) $(LIBFT) -o $(CLIENT)
+
+${LIBFT} : 
+	make -C ${LIBFT_PATH}
 
 clean:
-	make clean -C ./libft
-	rm -rf $(OBJ)
+	make clean -C ${LIBFT_PATH}
+	rm -rf $(OBJ) client.o server.o
 
 fclean: clean
-	make fclean -C ./libft
-	rm -rf $(NAME)
+	make fclean -C ${LIBFT_PATH}
+	rm -rf $(SERVER) $(CLIENT)
 
-re: fclean all
+re: fclean all # to review
