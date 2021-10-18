@@ -8,27 +8,28 @@ FLAG = -Wall -Werror -Wextra
 HDR = includes/
 LIBFT_PATH = src/libft/
 
-SRC	:=	 src/encode.c src/decode.c
-OBJ := $(SRC:.c=.o)
+CSRC	:=	 src/encode.c client.c
+COBJ := $(CSRC:.c=.o)
+SSRC	:=	 src/decode.c server.c
+SOBJ := $(SSRC:.c=.o)
 
 %.o : %.c $(HDR)
 	$(CC) $(FLAG) $(INCLUDE) -c $< -o $@
 
 all : ${LIBFT} ${SERVER} $(CLIENT)
 
-$(SERVER) : $(SRC) ${LIBFT} ${HDR} ${OBJ}
-	make -C ${LIBFT_PATH}
-	$(CC) $(FLAG) $(INCLUDE) server.o $(SRC) $(LIBFT) -o $(SERVER)
+$(SERVER) : $(SRC) ${HDR} ${SOBJ}
+	$(CC) $(FLAG) $(INCLUDE) $(SOBJ) $(LIBFT) -o $(SERVER)
 
-$(CLIENT) : $(SRC) $(LIBFT) ${HDR}
-	$(CC) $(FLAG) $(INCLUDE) client.o $(SRC) $(LIBFT) -o $(CLIENT)
+$(CLIENT) : $(SRC) ${HDR} ${COBJ}
+	$(CC) $(FLAG) $(INCLUDE) $(COBJ) $(LIBFT) -o $(CLIENT)
 
 ${LIBFT} : 
 	make -C ${LIBFT_PATH}
 
 clean:
 	make clean -C ${LIBFT_PATH}
-	rm -rf $(OBJ) client.o server.o
+	rm -rf $(COBJ) $(SOBJ)
 
 fclean: clean
 	make fclean -C ${LIBFT_PATH}

@@ -4,7 +4,8 @@ int main (int ac, char **av)
 {
     int pid;
 
-    if (ac != 3 || !ft_isstrdigit(av[1]))
+    if (ac != 3 || !ft_isstrdigit(av[1])
+        || kill(ft_atoi(av[1]), 0))
     {
         ft_putstr_fd(2, "Error");
         exit(EXIT_FAILURE);

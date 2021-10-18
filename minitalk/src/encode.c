@@ -33,9 +33,7 @@ void    encode(int pid, char *msg)
             else
                 kill(pid, SIGUSR1);
             bit *= 2;
-            usleep(75);
-            while(1)
-                pause(); //setitimer() for timeout
+            pause(); //setitimer() for timeout
             j++;
         }
         i++;
