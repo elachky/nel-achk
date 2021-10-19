@@ -1,41 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   encode.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nel-achk <nel-achk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/19 15:14:25 by nel-achk          #+#    #+#             */
+/*   Updated: 2021/10/19 15:15:32 by nel-achk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
-void handle(int sig)
+void	send_char(char c, int pid)
 {
-    if (sig != SIGUSR2)
-    {
-        exit(EXIT_FAILURE);
-        ft_putstr_fd(2,"error ack");
-    }
+	int	i;
+	int	bit;
+
+	bit = 1;
+	i = 0;
+	while (i < 8)
+	{
+		usleep(75);
+		if (c & bit)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		pause();
+		bit *= 2;
+		i++;
+	}
 }
 
-void    encode(int pid, char *msg)
+void	handle_ack(int signo)
 {
-    int bit;
-    int i;
-    int j;
+	if (signo != SIGUSR2)
+	{
+		exit(EXIT_FAILURE);
+		ft_putstr_fd(2, "error ack");
+	}
+}
 
-    i = 0;
-    if (signal(SIGUSR1, &handle) < 0 
-        || signal(SIGUSR2, &handle) < 0)
-    {
-        ft_putstr_fd(2, "signal Error");
-        exit(EXIT_FAILURE);
-    }
-    while (msg[i])
-    {
-        bit = 1;
-        j = 0;
-        while (j < 8)
-        {
-            if (msg[i] & bit)
-                kill(pid, SIGUSR2);
-            else
-                kill(pid, SIGUSR1);
-            bit *= 2;
-            pause(); //setitimer() for timeout
-            j++;
-        }
-        i++;
-    }
+void	encode(int pid, char *msg)
+{
+	int	i;
+
+	i = -1;
+	if (signal(SIGUSR1, &handle_ack) < 0
+		|| signal(SIGUSR2, &handle_ack) < 0)
+	{
+		ft_putstr_fd(2, "signal Error");
+		exit(EXIT_FAILURE);
+	}
+	while (msg[++i] != '\0')
+		send_char(msg[i], pid);
+	send_char(msg[i], pid);
 }

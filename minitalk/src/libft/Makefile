@@ -7,7 +7,7 @@ INCLUDE := -I.
 
 HEADERS := ft_libft.h
 
-SRC :=	ft_atoi.c ft_isdigit.c ft_putchar_fd.c ft_strlen.c \
+SRC :=	ft_atoi.c ft_isdigit.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putnbr.c ft_isstrdigit.c ft_isspace.c
 
 OBJ := $(SRC:.c=.o)

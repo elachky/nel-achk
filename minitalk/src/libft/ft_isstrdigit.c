@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isstrdigit.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nel-achk <nel-achk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/19 15:22:59 by nel-achk          #+#    #+#             */
+/*   Updated: 2021/10/19 15:24:00 by nel-achk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_libft.h"
 
-int ft_isstrdigit(char *s)
+int	ft_isstrdigit(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i] != '\0')
-        if (!ft_isdigit(s[i++]))
-            return (0);
-    return (1);
+	i = 0;
+	while (s[i] != '\0')
+		if (!ft_isdigit(s[i++]))
+			return (0);
+	return (1);
 }
