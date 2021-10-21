@@ -13,10 +13,12 @@ static void sort_three(t_stack **a)
 	first = ft_stack_value_at(*a, 0);
 	second = ft_stack_value_at(*a, 1);
 	third = ft_stack_value_at(*a, 2);
-	if ((first == max && second == min) || (third == max && first == min) || (second == max && third == min))
+	if ((first == max && second != min) 
+		|| (third == max && first != min) 
+		|| (second == max && third != min))
 	{
 		ft_stack_swap(a);
-		ft_putstr_fd(1, "sa");
+		ft_putstr_fd(1, "sa\n");
 	}
 }
 
@@ -71,7 +73,7 @@ static t_stack *get_lis(t_stack *a, int len)
 void push_swap_sort(t_stack **a, t_stack **b, int len)
 {
 	t_stack *lis;
-
+	
 	if (len == 3)
 		sort_three(a);
 	if (!(lis = get_lis(*a, len)))
@@ -93,9 +95,14 @@ void push_swap_sort(t_stack **a, t_stack **b, int len)
 			ft_putstr_fd(1, "ra\n");
 		}
 	}
-	free(lis);
-	// while (*b)
-	// 	next_operations(a, b);
+	
+	free(lis); // is this free correct ##to review##
+	// printf("%d ", ft_stack_value_at(*a, 12));
+	// while (*b)//need to add after push unsorted elements to stack b
+	// {
+		// next_operations(a, b);
+	// }
+		
 	// while (lis)
 	// {
 	// 	printf("%d ", lis->data);

@@ -6,6 +6,8 @@ int ft_stack_value_at(t_stack *s, int index)
     int len;
 
     len = ft_stack_len(s);
+    if (index > len)
+        return (-1);
     if (index < 0)
         index = len + index;
     i = 0;

@@ -9,7 +9,8 @@ HEADERS := ft_utils.h
 
 SRC :=	ft_atoi.c ft_atol.c ft_isdigit.c ft_isspace.c \
 		ft_putchar_fd.c ft_strcmp.c ft_strlen.c ft_putstr_fd.c\
-		ft_putnbr.c ft_calloc.c ft_max_arr.c ft_last_index.c
+		ft_putnbr.c ft_calloc.c ft_max_arr.c ft_last_index.c \
+		ft_abs.c ft_max.c
 
 OBJ := $(SRC:.c=.o)
 

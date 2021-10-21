@@ -18,5 +18,7 @@ void	ft_putnbr(int n);
 int 	*ft_calloc(int n);
 int     ft_max_arr(int *, int);
 int     ft_last_index(int *, int, int);
+int		ft_max(int a, int b);
+int		ft_abs(int n);
 
 #endif
